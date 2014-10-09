@@ -22,6 +22,12 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
+function testFixture(test, filename, expectedMessage) {
+  var actual   = grunt.file.read('tmp/testOutput/test/fixtures/' + filename);
+  var expected = grunt.file.read('test/expected/' + filename);
+  test.equal(actual, expected, expectedMessage);
+}
+
 exports.elm = {
   setUp: function(done) {
     // setup here if necessary
@@ -30,9 +36,8 @@ exports.elm = {
   oneFile: function(test) {
     test.expect(1);
 
-    var actual = grunt.file.read('tmp/testOutput/test/fixtures/TestHelloWorld.js');
-    var expected = grunt.file.read('test/expected/TestHelloWorld.js');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+    testFixture(test, "TestHelloWorld.js",
+      "should compile TestHelloWorld.elm to the expected TestHelloWorld.js")
 
     test.done();
   },

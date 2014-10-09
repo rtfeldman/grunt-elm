@@ -31,8 +31,6 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     elm: {
       oneFile: {
-        options: {
-        },
         files: {
           'tmp/testOutput': ['test/fixtures/TestHelloWorld.elm']
         }
