@@ -41,11 +41,12 @@ module.exports = function(grunt) {
   }
 
   function compile(sources, dest, options, callback) {
-    var args = compilerArgsFromOptions(options);
+    var destArgs = dest ? ["--build-dir=" + escapePath(dest)] : []
+    var args = compilerArgsFromOptions(options).concat(destArgs).concat(sources);
 
     return grunt.util.spawn({
       cmd: "elm",
-      args: args.concat(["--build-dir=" + escapePath(dest)]).concat(sources),
+      args: args,
       options: {cwd: process.cwd()}
     }, function (err, result, exitCode) {
       // Log any stdout using grunt.log.ok and any stderr using grunt.log.error
