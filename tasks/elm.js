@@ -9,42 +9,83 @@
 'use strict';
 
 module.exports = function(grunt) {
-
-  // Please see the Grunt documentation for more information regarding task
-  // creation: http://gruntjs.com/creating-tasks
+  var _ = require('lodash');
+  var defaultOptions = {
+    srcDir: null,
+    cacheDir: null,
+    compileDependencies: true,
+    bundleRuntime: false,
+    generateHtml: false,
+    noPrelude: false
+  };
 
   grunt.registerMultiTask('elm', 'Compile Elm files to JavaScript.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
-    var options = this.options({
-      punctuation: '.',
-      separator: ', '
-    });
-
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
-
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
+    compileAll(this.files, this.options(defaultOptions), this.async());
   });
 
+  function compileAll(files, options, callback) {
+    if (files.length === 0) {
+      return callback();
+    } else {
+      var file         = _.head(files);
+      var validSources = file.src.filter(isValidFilepath);
+
+      return compile(validSources, file.dest, options, function(err) {
+        if (err) {
+          callback(err);
+        } else {
+          compileAll(_.tail(files), options, callback);
+        }
+      });
+    }
+  }
+
+  function compile(sources, dest, options, callback) {
+    var args = compilerArgsFromOptions(options);
+
+    return grunt.util.spawn({
+      cmd: "elm",
+      args: args.concat(["--build-dir=" + escapePath(dest)]).concat(sources),
+      options: {cwd: process.cwd()}
+    }, function (err, result, exitCode) {
+      // Log any stdout using grunt.log.ok and any stderr using grunt.log.error
+      _.each({ok: result.stdout, error: result.stderr}, function(output, logType) {
+        if (output && output.length > 0) {
+          grunt.log[logType](output);
+        }
+      });
+
+      callback(err);
+    });
+  }
+
+  function isValidFilepath(filepath) {
+    var fileExists = grunt.file.exists(filepath);
+
+    if (!fileExists) {
+      grunt.log.warn('Source file "' + filepath + '" not found.');
+    }
+
+    return fileExists
+  }
+
+  function compilerArgsFromOptions(options) {
+    return _.compact(_.map(options, function(value, opt) {
+      switch(opt) {
+        case "srcDir":              return (value ? ("--src-dir=" + escapePath(value)) : null);
+        case "cacheDir":            return (value ? ("--cache-dir=" + escapePath(value)) : null);
+        case "compileDependencies": return (value ? "--make" : null);
+        case "bundleRuntime":       return (value ? "--bundle-runtime" : null);
+        case "generateHtml":        return (value ? null : "--only-js");
+        case "noPrelude":           return (value ? "--no-prelude" : null);
+        default:
+          grunt.log.warn('Unknown option: ' + opt);
+          return null;
+      }
+    }));
+  }
+
+  function escapePath(pathStr) {
+    return pathStr.replace(/ /g, "\\ ");
+  }
 };
