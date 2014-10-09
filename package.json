@@ -2,7 +2,7 @@
   "name": "grunt-elm",
   "description": "Compile Elm files to JavaScript.",
   "version": "0.1.1",
-  "homepage": "https://github.com/rfeldman/grunt-elm",
+  "homepage": "https://github.com/rtfeldman/grunt-elm",
   "author": {
     "name": "Richard Feldman",
     "email": "richard.t.feldman@gmail.com",
@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rfeldman/grunt-elm.git"
+    "url": "git://github.com/rtfeldman/grunt-elm.git"
   },
   "bugs": {
-    "url": "https://github.com/rfeldman/grunt-elm/issues"
+    "url": "https://github.com/rtfeldman/grunt-elm/issues"
   },
   "licenses": [
     {
       "type": "Apache2",
-      "url": "https://github.com/rfeldman/grunt-elm/blob/master/LICENSE-Apache2"
+      "url": "https://github.com/rtfeldman/grunt-elm/blob/master/LICENSE"
     }
   ],
   "engines": {
@@ -37,6 +37,7 @@
     "grunt": "~0.4.5"
   },
   "keywords": [
+    "elm",
     "gruntplugin"
   ],
   "dependencies": {
