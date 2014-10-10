@@ -39,6 +39,12 @@ module.exports = function(grunt) {
           'tmp/testOutput': ['test/fixtures/TestHelloWorld.elm']
         }
       },
+      twoFiles: {
+        options: defaultTestOptions,
+        files: {
+          'tmp/testOutput': ['test/fixtures/TestA.elm', 'test/fixtures/TestB.elm'],
+        }
+      },
     },
 
     // Unit tests.
