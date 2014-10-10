@@ -9,6 +9,9 @@
 'use strict';
 
 module.exports = function(grunt) {
+  var defaultTestOptions = {
+    srcDir: "test/fixtures"
+  }
 
   // Project configuration.
   grunt.initConfig({
@@ -31,6 +34,7 @@ module.exports = function(grunt) {
     // Configuration to be run (and then tested).
     elm: {
       oneFile: {
+        options: defaultTestOptions,
         files: {
           'tmp/testOutput': ['test/fixtures/TestHelloWorld.elm']
         }
