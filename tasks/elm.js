@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     cacheDir: null,
     compileDependencies: true,
     bundleRuntime: false,
-    generateHtml: false,
+    onlyJS: true,
     noPrelude: false
   };
 
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
         case "cacheDir":            return (value ? ("--cache-dir=" + escapePath(value)) : null);
         case "compileDependencies": return (value ? "--make" : null);
         case "bundleRuntime":       return (value ? "--bundle-runtime" : null);
-        case "generateHtml":        return (value ? null : "--only-js");
+        case "onlyJS":              return (value ? "--only-js" : null);
         case "noPrelude":           return (value ? "--no-prelude" : null);
         default:
           grunt.log.warn('Unknown option: ' + opt);

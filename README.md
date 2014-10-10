@@ -45,11 +45,11 @@ Default: `false`
 
 Bundle the runtime with the generated html or js to create a standalone file.
 
-#### generateHtml
+#### onlyJS
 Type: `boolean`
-Default: `false`
+Default: `true`
 
-Generate HTML output in addition to JavaScript.
+Compile only to JavaScript. (Do not create other output, such as HTML.)
 
 #### noPrelude
 Type: `boolean`
