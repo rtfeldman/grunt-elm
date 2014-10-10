@@ -72,16 +72,20 @@ module.exports = function(grunt) {
 
   function compilerArgsFromOptions(options) {
     return _.compact(_.map(options, function(value, opt) {
-      switch(opt) {
-        case "srcDir":              return (value ? ("--src-dir=" + escapePath(value)) : null);
-        case "cacheDir":            return (value ? ("--cache-dir=" + escapePath(value)) : null);
-        case "compileDependencies": return (value ? "--make" : null);
-        case "bundleRuntime":       return (value ? "--bundle-runtime" : null);
-        case "onlyJS":              return (value ? "--only-js" : null);
-        case "noPrelude":           return (value ? "--no-prelude" : null);
-        default:
-          grunt.log.warn('Unknown option: ' + opt);
-          return null;
+      if (value) {
+        switch(opt) {
+          case "srcDir":              return "--src-dir=" + escapePath(value);
+          case "cacheDir":            return "--cache-dir=" + escapePath(value);
+          case "compileDependencies": return "--make";
+          case "bundleRuntime":       return "--bundle-runtime";
+          case "onlyJS":              return "--only-js";
+          case "noPrelude":           return "--no-prelude";
+          default:
+            grunt.log.warn('Unknown option: ' + opt);
+            return null;
+        }
+      } else {
+        return null;
       }
     }));
   }
