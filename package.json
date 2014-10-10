@@ -1,7 +1,7 @@
 {
   "name": "grunt-elm",
   "description": "Compile Elm files to JavaScript.",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "homepage": "https://github.com/rtfeldman/grunt-elm",
   "author": {
     "name": "Richard Feldman",
