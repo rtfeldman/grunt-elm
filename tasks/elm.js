@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     srcDir: null,
     cacheDir: null,
     compileDependencies: true,
-    bundleRuntime: false,
+    bundleRuntime: true,
     onlyJS: true,
     noPrelude: false
   };
