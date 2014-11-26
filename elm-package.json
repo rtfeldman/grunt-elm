@@ -1,0 +1,13 @@
+{
+    "version": "1.0.0",
+    "summary": "Test files for grunt-elm",
+    "repository": "https://github.com/rtfeldman/grunt-elm.git",
+    "license": "Apache2",
+    "source-directories": [
+        "./test/fixtures"
+    ],
+    "exposed-modules": [],
+    "dependencies": {
+        "elm-lang/core": "1.0.0 <= v < 2.0.0"
+    }
+}
