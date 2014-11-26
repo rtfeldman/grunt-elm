@@ -1,6 +1,8 @@
 # grunt-elm
 > Compile Elm files to JavaScript.
 
+[![build status][1]][2] [![NPM version][3]][4]
+
 ## Getting Started
 
 This plugin requires Grunt `~0.4.0`
@@ -68,3 +70,8 @@ elm: {
     }
   },
 ```
+
+[1]: https://secure.travis-ci.org/rtfeldman/grunt-elm.svg
+[2]: https://travis-ci.org/rtfeldman/grunt-elm
+[3]: https://badge.fury.io/js/grunt-elm.svg
+[4]: https://badge.fury.io/js/grunt-elm
