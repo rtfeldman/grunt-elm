@@ -1,7 +1,5 @@
 # grunt-elm
-> Compile Elm files to JavaScript.
-
-[![build status][1]][2] [![NPM version][3]][4]
+> Compile Elm files to JavaScript. [![build status][1]][2] [![NPM version][3]][4]
 
 ## Getting Started
 
