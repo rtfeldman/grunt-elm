@@ -27,8 +27,8 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-# Elm cache
-cache
+# Elm stuff
+elm-stuff
 
 # For test files
 tmp

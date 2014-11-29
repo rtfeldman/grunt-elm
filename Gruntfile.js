@@ -10,7 +10,7 @@
 
 module.exports = function(grunt) {
   var defaultTestOptions = {
-    srcDir: "test/fixtures"
+    yesToAllPrompts: true
   }
 
   // Project configuration.
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 
     // Before generating any new files, remove any previously-created files.
     clean: {
-      tests: ['tmp', 'cache']
+      tests: ['tmp', 'elm-stuff']
     },
 
     // Configuration to be run (and then tested).
@@ -36,13 +36,13 @@ module.exports = function(grunt) {
       oneFile: {
         options: defaultTestOptions,
         files: {
-          'tmp/testOutput': ['test/fixtures/TestHelloWorld.elm']
+          'tmp/testOutput.js': ['test/fixtures/TestHelloWorld.elm']
         }
       },
       twoFiles: {
         options: defaultTestOptions,
         files: {
-          'tmp/testOutput': ['test/fixtures/TestA.elm', 'test/fixtures/TestB.elm'],
+          'tmp/testOutput.js': ['test/fixtures/TestA.elm', 'test/fixtures/TestB.elm'],
         }
       },
     },

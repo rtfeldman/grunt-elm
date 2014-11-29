@@ -21,41 +21,11 @@ grunt.loadNpmTasks('grunt-elm');
 
 ### Options
 
-#### srcDir
-Type: `String`
-Default: none
+#### yesToAllPrompts
+Type: `Boolean`
+Default: false
 
-Additional source directories searched when using `compileDependencies`.
-
-#### cacheDir
-Type: `String`
-Default: delegate to Elm compiler's default (currently `cache/`)
-
-Directory for files cached to make builds faster.
-
-#### compileDependencies
-Type: `boolean`
-Default: `true`
-
-Automatically compile dependencies.
-
-#### bundleRuntime
-Type: `boolean`
-Default: `false`
-
-Bundle the runtime with the generated html or js to create a standalone file.
-
-#### onlyJS
-Type: `boolean`
-Default: `true`
-
-Compile only to JavaScript. (Do not create other output, such as HTML.)
-
-#### noPrelude
-Type: `boolean`
-Default: `false`
-
-Do not import Prelude by default. Used only when compiling standard libraries.
+Automatically answer `yes` to any prompts that come up during the build.
 
 ### Usage Examples
 

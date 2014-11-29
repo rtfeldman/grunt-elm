@@ -11,12 +11,7 @@
 module.exports = function(grunt) {
   var _ = require('lodash');
   var defaultOptions = {
-    srcDir: null,
-    cacheDir: null,
-    compileDependencies: true,
-    bundleRuntime: true,
-    onlyJS: true,
-    noPrelude: false
+    yesToAllPrompts: false
   };
 
   grunt.registerMultiTask('elm', 'Compile Elm files to JavaScript.', function() {
@@ -41,11 +36,11 @@ module.exports = function(grunt) {
   }
 
   function compile(sources, dest, options, callback) {
-    var destArgs = dest ? ["--build-dir=" + escapePath(dest)] : []
-    var args = compilerArgsFromOptions(options).concat(destArgs).concat(sources);
+    var destArgs = dest ? ["--output", escapePath(dest)] : []
+    var args = sources.concat(destArgs).concat(compilerArgsFromOptions(options));
 
     return grunt.util.spawn({
-      cmd: "elm",
+      cmd: "elm-make",
       args: args,
       options: {cwd: process.cwd()}
     }, function (err, result, exitCode) {
@@ -74,12 +69,7 @@ module.exports = function(grunt) {
     return _.compact(_.map(options, function(value, opt) {
       if (value) {
         switch(opt) {
-          case "srcDir":              return "--src-dir=" + escapePath(value);
-          case "cacheDir":            return "--cache-dir=" + escapePath(value);
-          case "compileDependencies": return "--make";
-          case "bundleRuntime":       return "--bundle-runtime";
-          case "onlyJS":              return "--only-js";
-          case "noPrelude":           return "--no-prelude";
+          case "yesToAllPrompts": return "--yes";
           default:
             grunt.log.warn('Unknown option: ' + opt);
             return null;
