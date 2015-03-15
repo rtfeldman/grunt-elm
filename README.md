@@ -39,6 +39,17 @@ elm: {
   },
 ```
 
+### Changelog
+
+#### 1.0.0
+
+* Switch to using [node-elm-compiler](https://github.com/rtfeldman/node-elm-compiler) under the hood.
+* The `yesToAllPrompts` option now called `yes` and defaults to `true`.
+
+#### 0.4.0
+
+Initial release.
+
 [1]: https://secure.travis-ci.org/rtfeldman/grunt-elm.svg
 [2]: https://travis-ci.org/rtfeldman/grunt-elm
 [3]: https://badge.fury.io/js/grunt-elm.svg
