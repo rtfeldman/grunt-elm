@@ -43,8 +43,8 @@ elm: {
 
 #### 1.0.0
 
-* Switch to using [node-elm-compiler](https://github.com/rtfeldman/node-elm-compiler) under the hood.
-* The `yesToAllPrompts` option now called `yes` and defaults to `true`.
+* Switches to using [node-elm-compiler](https://github.com/rtfeldman/node-elm-compiler) under the hood.
+* The `yesToAllPrompts` option is now called `yes` and defaults to `true`.
 
 #### 0.4.0
 
