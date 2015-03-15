@@ -22,7 +22,7 @@ module.exports = function(grunt) {
   var elmCompile = require("node-elm-compiler").compile;
 
   var defaultOptions = {
-    yesToAllPrompts: false
+    yes: true
   };
 
   grunt.registerMultiTask('elm', 'Compile Elm files to JavaScript.', function() {

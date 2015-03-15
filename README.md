@@ -21,9 +21,9 @@ grunt.loadNpmTasks('grunt-elm');
 
 ### Options
 
-#### yesToAllPrompts
+#### yes
 Type: `Boolean`
-Default: false
+Default: true
 
 Automatically answer `yes` to any prompts that come up during the build.
 
