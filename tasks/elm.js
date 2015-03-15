@@ -18,7 +18,9 @@
 'use strict';
 
 module.exports = function(grunt) {
-  var _ = require('lodash');
+  var _          = require('lodash');
+  var elmCompile = require("node-elm-compiler").compile;
+
   var defaultOptions = {
     yesToAllPrompts: false
   };
@@ -27,14 +29,37 @@ module.exports = function(grunt) {
     compileAll(this.files, this.options(defaultOptions), this.async());
   });
 
+  function compile(sources, options, spawnOptions, callback) {
+    function spawn(cmd, args) {
+      return grunt.util.spawn({
+        cwd: process.cwd(),
+        cmd: cmd,
+        args: args,
+        options: spawnOptions
+      }, function(err, result, exitCode) {
+        // Log any stdout using grunt.log.ok and any stderr using grunt.log.error
+        _.each({ok: result.stdout, error: result.stderr}, function(output, logType) {
+          if (output && output.length > 0) {
+            grunt.log[logType](output);
+          }
+        });
+
+        callback(err);
+      })
+    };
+
+    return elmCompile(sources, _.defaults({spawn: spawn}, options));
+  }
+
   function compileAll(files, options, callback) {
     if (files.length === 0) {
       return callback();
     } else {
       var file         = _.head(files);
       var validSources = file.src.filter(isValidFilepath);
+      var compileOpts  = _.defaults({output: file.dest}, options);
 
-      return compile(validSources, file.dest, options, function(err) {
+      return compile(validSources, compileOpts, options, function(err) {
         if (err) {
           callback(err);
         } else {
@@ -42,26 +67,6 @@ module.exports = function(grunt) {
         }
       });
     }
-  }
-
-  function compile(sources, dest, options, callback) {
-    var destArgs = dest ? ["--output", escapePath(dest)] : []
-    var args = sources.concat(destArgs).concat(compilerArgsFromOptions(options));
-
-    return grunt.util.spawn({
-      cmd: "elm-make",
-      args: args,
-      options: {cwd: process.cwd()}
-    }, function (err, result, exitCode) {
-      // Log any stdout using grunt.log.ok and any stderr using grunt.log.error
-      _.each({ok: result.stdout, error: result.stderr}, function(output, logType) {
-        if (output && output.length > 0) {
-          grunt.log[logType](output);
-        }
-      });
-
-      callback(err);
-    });
   }
 
   function isValidFilepath(filepath) {
@@ -72,24 +77,5 @@ module.exports = function(grunt) {
     }
 
     return fileExists
-  }
-
-  function compilerArgsFromOptions(options) {
-    return _.compact(_.map(options, function(value, opt) {
-      if (value) {
-        switch(opt) {
-          case "yesToAllPrompts": return "--yes";
-          default:
-            grunt.log.warn('Unknown option: ' + opt);
-            return null;
-        }
-      } else {
-        return null;
-      }
-    }));
-  }
-
-  function escapePath(pathStr) {
-    return pathStr.replace(/ /g, "\\ ");
   }
 };
