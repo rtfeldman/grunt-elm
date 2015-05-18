@@ -1,7 +1,7 @@
 {
   "name": "grunt-elm",
   "description": "Compile Elm files to JavaScript.",
-  "version": "1.0.0",
+  "version": "1.1.0+elm-0.15",
   "homepage": "https://github.com/rtfeldman/grunt-elm",
   "author": {
     "name": "Richard Feldman",
@@ -41,7 +41,7 @@
     "gruntplugin"
   ],
   "dependencies": {
-    "node-elm-compiler": "0.0.3",
+    "node-elm-compiler": "0.1.0+elm-0.15",
     "lodash": "2.4.1"
   }
 }

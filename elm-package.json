@@ -1,13 +1,14 @@
 {
-    "version": "1.0.0",
-    "summary": "Test files for grunt-elm",
-    "repository": "https://github.com/rtfeldman/grunt-elm.git",
-    "license": "Apache2",
-    "source-directories": [
-        "./test/fixtures"
-    ],
-    "exposed-modules": [],
-    "dependencies": {
-        "elm-lang/core": "1.0.0 <= v < 2.0.0"
-    }
+  "version": "1.0.0",
+  "elm-version": "0.15.0 <= v < 0.16.0",
+  "summary": "Test files for grunt-elm",
+  "repository": "https://github.com/rtfeldman/grunt-elm.git",
+  "license": "Apache2",
+  "source-directories": [
+    "./test/fixtures"
+  ],
+  "exposed-modules": [],
+  "dependencies": {
+    "elm-lang/core": "2.0.0 <= v < 3.0.0"
+  }
 }
