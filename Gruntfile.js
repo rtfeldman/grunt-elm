@@ -10,7 +10,7 @@
 
 module.exports = function(grunt) {
   var defaultTestOptions = {
-    yesToAllPrompts: true
+    yes: true
   }
 
   // Project configuration.
