@@ -1,7 +1,7 @@
 module TestHelloWorld where
 
-import Graphics.Element (..)
-import Text (..)
+import Graphics.Element exposing (..)
+import Text exposing (..)
 
 main : Element
-main = plainText "Hello, World! This is a test of grunt-elm."
+main = show "Hello, World! This is a test of grunt-elm."
