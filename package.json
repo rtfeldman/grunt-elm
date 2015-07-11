@@ -15,12 +15,7 @@
   "bugs": {
     "url": "https://github.com/rtfeldman/grunt-elm/issues"
   },
-  "licenses": [
-    {
-      "type": "Apache2",
-      "url": "https://github.com/rtfeldman/grunt-elm/blob/master/LICENSE"
-    }
-  ],
+  "license": "Apache-2.0",
   "engines": {
     "node": ">= 0.8.0"
   },
