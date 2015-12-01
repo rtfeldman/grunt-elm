@@ -41,6 +41,10 @@ elm: {
 
 ### Changelog
 
+#### 1.4.1
+
+* Upgraded node-elm-compiler (support for Elm 0.16)
+
 #### 1.0.0
 
 * Switches to using [node-elm-compiler](https://github.com/rtfeldman/node-elm-compiler) under the hood.
