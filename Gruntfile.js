@@ -1,11 +1,3 @@
-/*
- * grunt-elm
- * https://github.com/rfeldman/grunt-elm
- *
- * Copyright (c) 2014 Richard Feldman
- * Licensed under the Apache2 license.
- */
-
 'use strict';
 
 module.exports = function(grunt) {
