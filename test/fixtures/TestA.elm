@@ -1,8 +1,7 @@
-module TestA where
+module TestA exposing (main)
 
 import TestDependency.Foo
-import Graphics.Element exposing (..)
-import Text exposing (..)
+import Html exposing (Html, text)
 
-main : Element
-main = show "This should say 5: " -- ++ (show $ addStuff 2 3)
+main : Html msg
+main = text "This should say 5: " -- ++ (show $ addStuff 2 3)

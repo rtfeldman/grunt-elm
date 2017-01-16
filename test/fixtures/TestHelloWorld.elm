@@ -1,7 +1,6 @@
-module TestHelloWorld where
+module TestHelloWorld exposing (main)
 
-import Graphics.Element exposing (..)
-import Text exposing (..)
+import Html exposing (Html, text)
 
-main : Element
-main = show "Hello, World! This is a test of grunt-elm."
+main : Html msg
+main = text "Hello, World! This is a test of grunt-elm."
