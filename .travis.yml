@@ -7,7 +7,7 @@ env:
 before_install:
 - npm install npm -g
 - npm install grunt-cli -g
-- npm install -g elm@$ELM_VERSION
+- npm install elm@$ELM_VERSION -g
 before_script:
 - npm install
 script: npm test
