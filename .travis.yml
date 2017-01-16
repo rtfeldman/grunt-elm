@@ -1,9 +1,13 @@
 language: node_js
 node_js:
 - '6'
+env:
+  matrix:
+    - ELM_VERSION=0.18.0 TARGET_NODE_VERSION=node
 before_install:
 - npm install npm -g
 - npm install grunt-cli -g
+- npm install -g elm@$ELM_VERSION
 before_script:
 - npm install
 script: npm test
