@@ -5,7 +5,8 @@ module.exports = function(grunt) {
   var elmCompile = require("node-elm-compiler").compile;
 
   var defaultOptions = {
-    yes: true
+    yes: true,
+    debug: false
   };
 
   grunt.registerMultiTask('elm', 'Compile Elm files to JavaScript.', function() {
