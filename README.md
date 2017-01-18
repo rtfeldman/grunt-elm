@@ -27,6 +27,12 @@ Default: true
 
 Automatically answer `yes` to any prompts that come up during the build.
 
+#### debug
+Type: `Boolean`
+Default: false
+
+Run elm make with the --debug flag
+
 ### Usage Examples
 
 ```js
@@ -40,6 +46,12 @@ elm: {
 ```
 
 ### Changelog
+
+#### 2.0.0
+
+* Upgraded to node-elm-compiler 4.2.1
+* `debug` option supported with default to `false`
+* Upgraded to elm 0.18.0
 
 #### 1.0.0
 

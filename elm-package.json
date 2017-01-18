@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "elm-version": "0.16.0 <= v < 0.17.0",
+  "elm-version": "0.18.0 <= v < 0.19.0",
   "summary": "Test files for grunt-elm",
   "repository": "https://github.com/rtfeldman/grunt-elm.git",
   "license": "BSD-3-Clause",
@@ -9,6 +9,7 @@
   ],
   "exposed-modules": [],
   "dependencies": {
-    "elm-lang/core": "3.0.0 <= v < 4.0.0"
+    "elm-lang/core": "5.0.0 <= v < 6.0.0",
+    "elm-lang/html": "2.0.0 <= v < 3.0.0"
   }
 }

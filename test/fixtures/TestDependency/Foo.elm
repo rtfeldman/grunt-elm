@@ -1,4 +1,4 @@
-module TestDependency.Foo (addStuff, multiplyStuff) where
+module TestDependency.Foo exposing (addStuff, multiplyStuff)
 
 addStuff foo bar = foo + bar
 

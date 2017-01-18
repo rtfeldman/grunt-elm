@@ -2,7 +2,13 @@
 
 module.exports = function(grunt) {
   var defaultTestOptions = {
-    yes: true
+    yes: true,
+    debug: false
+  }
+
+  var debugTestOptions = {
+    yes: true,
+    debug: true
   }
 
   // Project configuration.
@@ -35,6 +41,12 @@ module.exports = function(grunt) {
         options: defaultTestOptions,
         files: {
           'tmp/testOutput.js': ['test/fixtures/TestA.elm', 'test/fixtures/TestB.elm'],
+        }
+      },
+      debugMode: {
+        options: debugTestOptions,
+        files: {
+          'tmp/testOutput.js': ['test/fixtures/TestHelloWorld.elm']
         }
       },
     },
