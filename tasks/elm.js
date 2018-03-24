@@ -14,12 +14,12 @@ module.exports = function(grunt) {
   });
 
   function compile(sources, options, spawnOptions, callback) {
-    function spawn(cmd, args) {
+    function spawn(cmd, args, options) {
       return grunt.util.spawn({
         cwd: process.cwd(),
         cmd: cmd,
         args: args,
-        options: spawnOptions
+        opts: _.merge(options, spawnOptions)
       }, function(err, result, exitCode) {
         // Log any stdout using grunt.log.ok and any stderr using grunt.log.error
         _.each({ok: result.stdout, error: result.stderr}, function(output, logType) {
